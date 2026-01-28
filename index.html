@@ -1,13 +1,230 @@
-<meta charset="UTF-8">
-<form action="contact.php" method="POST" class="text-start mt-4">
-    <div class="mb-3">
-        <input type="text" name="username" class="form-control bg-dark text-white border-secondary" placeholder="お名前" required>
-    </div>
-    <div class="mb-3">
-        <input type="email" name="email" class="form-control bg-dark text-white border-secondary" placeholder="メールアドレス" required>
-    </div>
-    <div class="mb-3">
-        <textarea name="message" class="form-control bg-dark text-white border-secondary" rows="5" placeholder="お問い合わせ内容" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">送信する</button>
-</form>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社Jecコンサルティング | 未来を加速させるパートナー</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --bg-dark: #0a0a0a;
+            --text-light: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+        }
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary-color) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #0a0a0a 30%, #1a1a1a 100%);
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } }
+
+        /* Sections */
+        section { padding: 100px 0; }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+        }
+
+        /* Cards */
+        .card {
+            background: #161616;
+            border: 1px solid #333;
+            color: #fff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            padding: 50px 0;
+            border-top: 1px solid #222;
+        }
+
+        /* Scroll Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            color: #000;
+            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Jec Consulting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">SERVICES</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="reveal">Innovate Your Vision.</h1>
+            <p class="lead mb-4 reveal">株式会社Jecコンサルティングは、ビジネスの可能性を最大化します。</p>
+            <a href="#services" class="btn btn-primary btn-lg reveal">私たちのサービス</a>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 reveal">
+                <h2 class="section-title">ABOUT US</h2>
+                <p>私たちは、最先端の知見と確かな戦略で、お客様のデジタルトランスフォーメーションを強力に支援するプロフェッショナル集団です。</p>
+                <p>「Jec」という名に込めた、情熱(Joy)、実行(Execution)、創造(Creation)を軸に、次世代のビジネススタンダードを構築します。</p>
+            </div>
+            <div class="col-lg-6 reveal">
+                <div class="p-5 bg-secondary rounded-3 text-center" style="opacity: 0.2; border: 2px dashed #666;">
+                    [Image Space: Abstract Office]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background-color: #0f0f0f;">
+        <div class="container">
+            <h2 class="section-title reveal">SERVICES</h2>
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="card p-4">
+                        <h3>Strategy</h3>
+                        <p>市場分析に基づいた、持続可能な成長戦略の策定をサポートします。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="card p-4">
+                        <h3>Digital Transformation</h3>
+                        <p>ITインフラの最適化と、AI・データ活用による業務効率化を実現します。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="card p-4">
+                        <h3>Human Resources</h3>
+                        <p>次世代リーダーの育成と、組織文化の変革をプロデュースします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container text-center">
+        <h2 class="section-title reveal">CONTACT</h2>
+        <div class="row justify-content-center reveal">
+            <div class="col-md-6">
+                <p>プロジェクトのご相談、お見積りなどお気軽にお問い合わせください。</p>
+                <form action="contact.php" method="POST" class="text-start mt-4">
+                    <div class="mb-3">
+                        <input type="text" name="username" class="form-control bg-dark text-white border-secondary" placeholder="お名前" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control bg-dark text-white border-secondary" placeholder="メールアドレス" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="message" class="form-control bg-dark text-white border-secondary" rows="5" placeholder="お問い合わせ内容" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">送信する</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 株式会社Jecコンサルティング. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // Initial check
+        reveal();
+    </script>
+</body>
+</html>
